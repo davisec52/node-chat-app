@@ -1,0 +1,21 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "simple chat server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-watch": "nodemon --exec 'npm start'"
+  },
+
+  "engines": {
+    "node": "8.5.0"
+  },
+
+  "author": "evan davis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
