@@ -6,22 +6,13 @@
 		<title>Simple Node Chat App</title>
 	</head>
 		<body>
-			<p>Index page for chat app.</p>
+			<p id="text">Index page for chat app.</p>
+			<p id="text">Index page for chat app.</p>
+			<p id="text">Index page for chat app.</p>
 
 
 
 			<script src="/socket.io/socket.io.js"></script>
-			<script>
-				let socket = io();
-				socket.on("connect", () => {
-					console.log("Connected to server");
-
-					socket.on("disconnect", () => {
-						console.log("Disconnected from server");
-					});
-				});
-
-				
-			</script>
+			<script src="/js/index.js"></script>
 		</body>
 </html>
