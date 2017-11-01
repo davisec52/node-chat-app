@@ -18,10 +18,11 @@ io.on("connection", (socket) => {
 
 	socket.broadcast.emit("newMessage", generateMessage("Admin", "New user has joined"));
 
-	socket.on("userMessage", (userMsg) => {
+	socket.on("userMessage", (userMsg, callback) => {
 		console.log("new user message ", userMsg);
 
 		io.emit("newMessage", generateMessage(userMsg.from, userMsg.text));
+		callback("Received and acknowledged from server");
 	});
 
 
