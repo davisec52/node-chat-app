@@ -6,7 +6,7 @@ const publicPath = path.join(__dirname, "../public");
 const http = require("http");
 let server = http.createServer(app);
 let io = socketIO(server);
-let {generateMessage} = require("./utils/message");
+let {generateMessage, generateLocationMessage} = require("./utils/message");
 let port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
@@ -23,6 +23,10 @@ io.on("connection", (socket) => {
 
 		io.emit("newMessage", generateMessage(userMsg.from, userMsg.text));
 		callback("Received and acknowledged from server");
+	});
+
+	socket.on("createLocationMessage", (coords) => {
+		io.emit("newLocationMessage", generateLocationMessage("Q", coords.latitude, coords.longitude));
 	});
 
 
