@@ -19,14 +19,12 @@ io.on("connection", (socket) => {
 	socket.broadcast.emit("newMessage", generateMessage("Admin", "New user has joined"));
 
 	socket.on("userMessage", (userMsg, callback) => {
-		console.log("new user message ", userMsg);
 
 		io.emit("newMessage", generateMessage(userMsg.from, userMsg.text));
 		callback();
 	});
 
 	socket.on("createLocationMessage", (coords) => {
-		console.log(generateLocationMessage("Q", coords.latitude, coords.longitude));
 		io.emit("newLocationMessage", generateLocationMessage("Q", coords.latitude, coords.longitude));
 	});
 
