@@ -22,7 +22,7 @@ socket.on('disconnect', function () {
   console.log('Disconnected from server');
 });
 
-socket.on("newMessage", function (message) {
+/*socket.on("newMessage", function (message) {
 	let formattedTime = moment(message.createdAt).format("h:mm a");
 	let template = $("#message-template").html();
   	let html = Mustache.render(template, {
@@ -48,25 +48,29 @@ socket.on("newLocationMessage", function(message) {
   	});
   	$("#messages").append(html);
   	scrollToBottom();
-});
+});*/
 
-$("#message-form").on("submit", function(e) {
+$("#join-form").on("submit", function(e) {
 	e.preventDefault();
 
-	let messageTextBox = $("[name=message]");
+	console.log(location);
+
+	/*let messageTextBox = $("[name=message]");
 
 	socket.emit("userMessage", {
 		from: "User",
 		text: messageTextBox.val()
 	}, function() {
 		messageTextBox.val("");
-	});
+	});*/
 });
 
-let locButton = $("#send-location");
+let locButton = $("#join-form");
 
 locButton.on("click", function(e) {
-	if(!navigator.geolocation) {
+
+	console.log("button clicked");
+	/*if(!navigator.geolocation) {
 		alert("Geolocation not supported by your browser.");
 	}//else {
 		locButton.prop("disabled", true).text("Sending location...");
@@ -80,5 +84,5 @@ locButton.on("click", function(e) {
 			locButtion.prop("disabled", false);
 			alert("Unable to get location.");
 		});
-	//}
+	//}*/
 });
