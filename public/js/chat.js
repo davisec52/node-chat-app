@@ -21,13 +21,18 @@ socket.on('connect', function () {
 
   socket.emit("join", params, (err) => {
   	if(err) {
-  		alert("Error");
+  		alert("Error: Username or room name may be invalid.");
   		window.location.href = "/";
   	}else {
   		console.log("No error");
   	}
   });
 
+});
+
+socket.on("nameError", function() {
+	alert("User name must be unique");
+	window.location.href = "/";
 });
 
 socket.on('disconnect', function () {

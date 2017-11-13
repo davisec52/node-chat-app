@@ -10,6 +10,34 @@
 class Users {
 	constructor () {
 		this.users = [];
+		this.rooms = [];
+	}
+
+	checkNames(room) {
+		let roomUsers = this.users.filter((user) => user.room === room);
+		let userList = roomUsers.map((user) => user.name.toLowerCase());
+
+		return userList;
+	}
+
+	addRoom(room) {
+		let chatRoom = room;
+		this.rooms.push(chatRoom);
+		return chatRoom;
+	}
+
+	removeRoom(room) {
+		let removedRoom = this.rooms.filter((chatRoom) => chatRoom === room);
+
+		if(removedRoom) {
+			this.rooms = this.rooms.filter((chatRoom) => chatRoom !== room);
+		}
+		
+		return removedRoom;
+	}
+
+	getRoomList() {
+		return this.rooms;
 	}
 
 	addUser(id, name, room) {

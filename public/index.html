@@ -11,7 +11,7 @@
 			<div class="centered-form__form">
 				<form id="join-form" action="/chat.html">
 					<div class="form-field">
-						<h3>Welcome to the Monkey House!</h3>
+						<h3>Welcome to Chat Now!</h3>
 					</div>
 					<div class="form-field">
 						<label>Display Name</label>
@@ -26,12 +26,20 @@
 					</div>
 				</form>
 			</div>
-			
+
+			<div id="active-rooms">
+				<div class="centered-list__list">
+					<div class="form-field">
+						<h3>Active Chat Rooms</h3>
+					</div>
+					<div id="room-list"></div>
+						<!--<ol id="chat-room-list" class="chat__messages"></ol>-->
+				</div>
+			</div>
 
 			<script src="/socket.io/socket.io.js"></script>
 			<script src="/js/libs/jquery-3.2.1.min.js"></script>
-			<!-- <script src="/js/libs/moment.js"></script>
-			<script src="/js/libs/mustache.js"></script> 
-			<script src="/js/index.js"></script>-->
+			<script src="/js/libs/deparam.js"></script>
+			<script src="/js/index.js"></script>
 		</body>
 </html>
