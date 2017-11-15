@@ -32,18 +32,15 @@ io.on("connection", (socket) => {
 		console.log("socket id ", socket.id);
 
 		let names = users.checkNames(params.room);
-		console.log("name check ", names);
+		console.log("names ", names, params.name);
 		names.forEach((name) => {
 			if(name && name === params.name.toLowerCase()) {
-				console.log("Name must be unique");
+				console.log("Name must be unique", name, params.nam);
 				signal = false;
-				socket.emit("nameError");
-				let badUser = users.getUser(socket.id);
 				users.removeUser(socket.id);
-				users.removUser(badUser.id);
-				return;
+				socket.emit("nameError");
 			}
-
+			return;
 		});
 
 		//By changing params.room to lower case, we reduce instances of duplication.
@@ -57,7 +54,10 @@ io.on("connection", (socket) => {
 		
 		socket.join(params.room);
 		users.removeUser(socket.id);
-		users.addUser(socket.id, params.name, params.room);
+		if(signal) {
+			users.addUser(socket.id, params.name, params.room);
+		}
+		//users.addUser(socket.id, params.name, params.room);
 
 		io.to(params.room).emit("updateUserList", users.getUserList(params.room));
 		socket.emit("newMessage", generateMessage("Admin", `Welcome to Chat Now! You have joined the room: ${params.room}`));

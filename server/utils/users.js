@@ -58,6 +58,14 @@ class Users {
 		return removedUser;
 	}
 
+	removeUserByName(name) {
+		let removedUser = this.users.filter((user) => user.name = name)[0];
+		if(removedUser) {
+			this.users = this.users.filter((user) => user.nsme !== name);
+		}
+		return removedUser;
+	}
+
 	getUser(id) {
 		let res = this.users.filter((user) => user.id === id)[0];
 		return res;
