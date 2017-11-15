@@ -34,16 +34,20 @@ io.on("connection", (socket) => {
 		let names = users.checkNames(params.room);
 		console.log("name check ", names);
 		names.forEach((name) => {
-			if(name === params.name.toLowerCase()) {
+			if(name && name === params.name.toLowerCase()) {
 				console.log("Name must be unique");
-				users.removeUser(socket.id);
 				signal = false;
-				return socket.emit("nameError");
+				socket.emit("nameError");
+				let badUser = users.getUser(socket.id);
+				users.removeUser(socket.id);
+				users.removUser(badUser.id);
+				return;
 			}
+
 		});
 
 		//By changing params.room to lower case, we reduce instances of duplication.
-
+		//This does, however, force all rooms to lowercase.
 		
 
 		params.room = params.room.toLowerCase();

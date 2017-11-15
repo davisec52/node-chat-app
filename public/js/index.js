@@ -2,8 +2,6 @@ let socket = io();
 
 socket.on("updateRoomList", function(roomList) {
 
-	console.log("room list from index.js ", roomList);
-
 	let ol = $("<ol id='chat-room-list' class='chat__messages'></ol>");
 	
 	roomList.forEach(function(chatRoom) {
