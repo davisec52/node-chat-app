@@ -37,7 +37,8 @@ io.on("connection", (socket) => {
 			if(name && name === params.name.toLowerCase()) {
 				console.log("Name must be unique", name, params.nam);
 				signal = false;
-				users.removeUser(socket.id);
+				//user not added to user array at this point.
+				//users.removeUser(socket.id);
 				socket.emit("nameError");
 			}
 			return;
