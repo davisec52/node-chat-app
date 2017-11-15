@@ -49,8 +49,12 @@ io.on("connection", (socket) => {
 		
 
 		params.room = params.room.toLowerCase();
-		users.removeRoom(params.room);
-		users.addRoom(params.room);
+		if(signal) {
+			users.removeRoom(params.room);
+			users.addRoom(params.room);
+		}
+		//users.removeRoom(params.room);
+		//users.addRoom(params.room);
 		console.log("room list from server.js ", users.getRoomList());
 		
 		socket.join(params.room);
